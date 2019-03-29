@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
 function SEO({ description, lang, meta, keywords, title }) {
   const { site } = useStaticQuery(
@@ -23,9 +23,9 @@ function SEO({ description, lang, meta, keywords, title }) {
         }
       }
     `
-  )
+  );
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
@@ -67,6 +67,14 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: "msapplication-TileColor",
+          content: "#f0db4f",
+        },
+        {
+          name: "theme-color",
+          content: "#ffffff",
+        },
       ]
         .concat(
           keywords.length > 0
@@ -77,16 +85,52 @@ function SEO({ description, lang, meta, keywords, title }) {
             : []
         )
         .concat(meta)}
+      link={[
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          href: "/favicon-32x32.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "16x16",
+          href: "/favicon-16x16.png",
+        },
+        {
+          rel: "manifest",
+          href: "/site.webmanifest",
+        },
+        {
+          rel: "mask-icon",
+          href: "/safari-pinned-tab.svg",
+          color: "#f0db4f",
+        },
+      ]}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `ru`,
   meta: [],
-  keywords: [],
-  description: ``,
-}
+  keywords: [
+    "frontend magazine",
+    "фронденд",
+    "javascript",
+    "css",
+    "переводы",
+    "блог",
+  ],
+  description: `Образовательные материалы для Frontend инженеров.
+Новости, статьи, руководства, переводы и полезные инструменты.`,
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -94,6 +138,6 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default SEO
+export default SEO;

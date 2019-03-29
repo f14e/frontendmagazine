@@ -1,23 +1,38 @@
-import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
+import Typography from "typography";
 
-Wordpress2016.overrideThemeStyles = () => {
+import GitHub from "typography-theme-github";
+
+GitHub.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
-  }
-}
+  };
+};
 
-delete Wordpress2016.googleFonts
+GitHub.googleFonts = [
+  {
+    name: "Roboto Condensed",
+    styles: ["400"],
+  },
+  {
+    name: "PT Sans",
+    styles: ["400", "400i", "700"],
+  },
+];
 
-const typography = new Typography(Wordpress2016)
+GitHub.bodyFontFamily = ["PT Sans", "Roboto", "sans-serif"];
+GitHub.headerFontFamily = ["Roboto Condensed", "Roboto", "sans-serif"];
+GitHub.baseFontSize = "18px";
+GitHub.scaleRatio = 1.75;
+
+const typography = new Typography(GitHub);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {
-  typography.injectStyles()
+  typography.injectStyles();
 }
 
-export default typography
-export const rhythm = typography.rhythm
-export const scale = typography.scale
+export default typography;
+export const rhythm = typography.rhythm;
+export const scale = typography.scale;

@@ -1,14 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Frontend Magazine`,
+    author: `Eugene Dzhumak`,
+    description: `Новости, статьи и полезные материалы для фронтенд-инженеров.`,
+    siteUrl: `https://www.frontendmagazine.ru`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `El4astero`,
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,9 +45,11 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `gatsby-remark-reading-time`,
         ],
       },
     },
@@ -50,20 +58,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-98718220-2`,
       },
     },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Frontend Magazine`,
+        short_name: `Frontend Magazine`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/favicon/favicon-32x32.png`,
       },
     },
     `gatsby-plugin-offline`,
@@ -72,7 +80,8 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+        icon: null,
       },
     },
   ],
-}
+};
