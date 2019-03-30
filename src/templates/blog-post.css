@@ -1,3 +1,5 @@
+@import "../../content/assets/fonts/fira_code.css";
+
 .gatsby-highlight-code-line {
     background-color: #feb;
     display: block;
@@ -8,7 +10,34 @@
     border-left: 0.25em solid #f99;
 }
 
+/* Adjust the position of the line numbers */
+.gatsby-highlight pre[class*="language-"].line-numbers {
+    padding-left: 2.8em;
+}
+
+.gatsby-highlight .line-numbers-rows {
+    opacity: .5;
+    /*border-right: 1px solid #9694948f;*/
+}
+
+.gatsby-highlight pre[class*="language-"] {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.gatsby-highlight {
+    background-color: #f7f7f7;
+    margin-left: -100vw;
+    padding-left: 100vw;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 200vw;
+    margin-bottom: 0.8125rem;
+}
+
 .gatsby-highlight code[class*="language-"] {
-    font-size: 16px;
-    font-family: Iosevka, monospace;
+    font-family: "Fira Code", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 14px;
+    line-height: 1.3;
 }

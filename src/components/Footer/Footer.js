@@ -14,6 +14,7 @@ const Footer = () => (
       >
         Вконтакте
       </a>
+      ·
       <a
         href="https://t.me/frontendmagazine"
         target="_blank"
@@ -21,6 +22,7 @@ const Footer = () => (
       >
         Телеграм
       </a>
+      ·
       <a href="/rss.xml" title="RSS Feed" target="_blank">
         RSS
       </a>

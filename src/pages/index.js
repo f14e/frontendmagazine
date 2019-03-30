@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Footer from "../components/Footer/Footer";
-import { rhythm } from "../utils/typography";
+import Layout from "components/layout";
+import SEO from "components/seo";
+import Footer from "components/Footer/Footer";
+import { rhythm } from "utils/typography";
+import "./index.css";
 
 class BlogIndex extends React.Component {
   render() {
@@ -39,7 +39,9 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>
+                <time>{node.frontmatter.date}</time>
+              </small>
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,

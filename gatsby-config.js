@@ -29,6 +29,8 @@ module.exports = {
         name: `assets`,
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -36,7 +38,11 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              // showCaptions: true,
+              tracedSVG: true,
+              sizeByPixelDensity: true,
+              withWebp: true,
+              quality: 100,
             },
           },
           {
@@ -53,8 +59,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

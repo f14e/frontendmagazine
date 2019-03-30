@@ -23,7 +23,7 @@ GitHub.googleFonts = [
 
 GitHub.bodyFontFamily = ["PT Sans", "Roboto", "sans-serif"];
 GitHub.headerFontFamily = ["Roboto Condensed", "Roboto", "sans-serif"];
-GitHub.baseFontSize = "18px";
+GitHub.baseFontSize = "16px";
 GitHub.scaleRatio = 1.75;
 
 const typography = new Typography(GitHub);
