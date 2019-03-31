@@ -5,7 +5,7 @@ description: "Привет, мир!"
 ---
 
 ```flow{numberLines: true}
-const greet = message => `${message}, `;
+const greet = message => name => `${message}, ${name}!`;
 const sayHello = greet('Hello');
 
 document.write(sayHello('World'));
