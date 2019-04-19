@@ -20,7 +20,15 @@ const Footer = () => (
         target="_blank"
         rel="noreferrer noopener"
       >
-        Телеграм
+        Telegram
+      </a>
+      ·
+      <a
+        href="https://www.instagram.com/frontendmag"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Instargram
       </a>
       ·
       <a href="/rss.xml" title="RSS Feed" target="_blank">

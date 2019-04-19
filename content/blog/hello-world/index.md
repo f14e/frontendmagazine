@@ -4,11 +4,12 @@ date: "2019-03-29T22:12:03.284Z"
 description: "Привет, мир!"
 ---
 
-```flow{numberLines: true}
-const greet = message => name => `${message}, ${name}!`;
-const sayHello = greet('Hello');
-
-document.write(sayHello('World'));
+```javascript{numberLines: true}
+function foo(bar) {
+    var a = 42,
+        b = 'Prism';
+    return a + bar(b);
+}
 ```
 
 ![Frontend Magazine Logo](logo_short.png)

@@ -10,21 +10,35 @@ GitHub.overrideThemeStyles = () => {
   };
 };
 
-GitHub.googleFonts = [
-  {
-    name: "Roboto Condensed",
-    styles: ["400"],
-  },
-  {
-    name: "PT Sans",
-    styles: ["400", "400i", "700"],
-  },
-];
+// GitHub.googleFonts = [
+//   {
+//     name: "Roboto Condensed",
+//     styles: ["400"],
+//   },
+//   {
+//     name: "PT Sans",
+//     styles: ["400", "400i", "700"],
+//   },
+// ];
 
-GitHub.bodyFontFamily = ["PT Sans", "Roboto", "sans-serif"];
-GitHub.headerFontFamily = ["Roboto Condensed", "Roboto", "sans-serif"];
-GitHub.baseFontSize = "16px";
-GitHub.scaleRatio = 1.75;
+// GitHub.bodyFontFamily = [
+//   "-apple-system",
+//   "BlinkMacSystemFont",
+//   "Segoe UI",
+//   "Helvetica",
+//   "Arial",
+//   "sans-serif",
+// ];
+// GitHub.headerFontFamily = [
+//   "-apple-system",
+//   "BlinkMacSystemFont",
+//   "Segoe UI",
+//   "Helvetica",
+//   "Arial",
+//   "sans-serif",
+// ];
+// GitHub.baseFontSize = "16px";
+// GitHub.scaleRatio = 1.75;
 
 const typography = new Typography(GitHub);
 

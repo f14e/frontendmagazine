@@ -1,43 +1,110 @@
-@import "../../content/assets/fonts/fira_code.css";
-
 .gatsby-highlight-code-line {
-    background-color: #feb;
-    display: block;
-    margin-right: -1em;
-    margin-left: -1em;
-    padding-right: 1em;
-    padding-left: 0.75em;
-    border-left: 0.25em solid #f99;
-}
-
-/* Adjust the position of the line numbers */
-.gatsby-highlight pre[class*="language-"].line-numbers {
-    padding-left: 2.8em;
+  background-color: #feb;
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #f99;
 }
 
 .gatsby-highlight .line-numbers-rows {
-    opacity: .5;
-    /*border-right: 1px solid #9694948f;*/
-}
+  opacity: 0.5;
+  border: none;
 
-.gatsby-highlight pre[class*="language-"] {
-    padding: 0;
-    border: none;
-    background-color: transparent;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
 }
 
 .gatsby-highlight {
-    background-color: #f7f7f7;
-    margin-left: -100vw;
-    padding-left: 100vw;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 200vw;
-    margin-bottom: 0.8125rem;
+  background-color: #f6f8fa;
+  margin-left: -100vw;
+  padding-left: 100vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 200vw;
+  margin-bottom: 0.8125rem;
+  /* font-size: 12px;
+  line-height: 20px; */
 }
 
-.gatsby-highlight code[class*="language-"] {
-    font-family: "Fira Code", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 14px;
-    line-height: 1.3;
+/**
+ * GHColors theme by Avi Aryan (http://aviaryan.in)
+ * Inspired by Github syntax coloring
+ */
+
+code[class*="language-"] {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+}
+
+pre[class*="language-"],
+code[class*="language-"] {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  color: #393a34;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  font-size: 12px;
+  line-height: 20px;
+
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 85%;
+}
+
+.token.keyword,
+.token.operator,
+.token.script > .token.script-punctuation {
+  color: #d73a49;
+}
+
+.token.function,
+.token.script > .token.keyword,
+.token.constant,
+.token.number,
+.token.boolean {
+  color: #005cc5;
+}
+
+.token.string,
+.token.attr-value {
+  color: #032f62;
+}
+
+.token.punctuation + .token.function:not(.function-variable),
+.token.attr-name {
+  color: #6f42c1;
+}
+
+.token.comment {
+  color: #6a737d;
+}
+
+.token.tag {
+  color: #22863a;
+}
+
+.token.script,
+.token.punctuation {
+  color: #24292e;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
 }

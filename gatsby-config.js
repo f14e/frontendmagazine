@@ -3,7 +3,7 @@ module.exports = {
     title: `Frontend Magazine`,
     author: `Eugene Dzhumak`,
     description: `Новости, статьи и полезные материалы для фронтенд-инженеров.`,
-    siteUrl: `https://www.frontendmagazine.ru`,
+    siteUrl: `https://frontendmagazine.ru`,
     social: {
       twitter: `El4astero`,
     },
