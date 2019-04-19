@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Frontend Magazine]]></title><description><![CDATA[Новости, статьи и полезные материалы для фронтенд-инженеров.]]></description><link>https://www.frontendmagazine.ru</link><generator>RSS for Node</generator><lastBuildDate>Sun, 31 Mar 2019 13:28:29 GMT</lastBuildDate><item><title><![CDATA[Привет, мир!]]></title><link>https://www.frontendmagazine.ru/hello-world/</link><guid isPermaLink="false">https://www.frontendmagazine.ru/hello-world/</guid><pubDate>Fri, 29 Mar 2019 22:12:03 GMT</pubDate><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;flow&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber 0&quot; class=&quot;language-flow line-numbers&quot;&gt;&lt;code class=&quot;language-flow&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;greet&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; message &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; name &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;message&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;!`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; sayHello &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;greet&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Hello&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sayHello&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;World&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4070ffd5f91edd1c7929b0ce6b00643c/7c2ef/logo_short.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 400px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAChElEQVQ4y+VU20tUYRDfP6MHIVE0a/fspb3vxuLW3tzrWc0ioSKRtAIjsKdeInoJiuohguqlNAi6yBpFkQlFBV1EKNK1UlfNotAsV7M0+PXNrKc9uvvYQ9DDcL4z881vZn4z82m+vk3gb4rm3wecfhPnA32nBguF9Oo76rNap/xrFGV2KIGf43KBzAg9yZfB4gCkJ1/FxhmSw/DzKO5eDaD7ek7uXQug50YAmRdRZHqjmMskOGN1dgQ2N5LA0LMIJgeWMpxKx7HwXkbnJR/WavWQDAZodXo+640GPEgF0driRG93DWdM98lxUnx/fUhy8AN7Xfj2LrEcsKvDj/JKCYfaNqCnM4BUhw+3r/gx3hdFNGxB0G/GWF8u08/9cfwYk9H/KAy73YjG7XbOlEtWAG9e9mN1mQ7tZzcC2Tp2oAyorC11NrY1bLXh46sYFidkjAgqYhEL6/ftdjKPBYCl5RLOnazm0siRyiJJJqxwOk2orNKjpdGBUcHptnobtJIBZosRzbscyA6vAEy1+5g7t9sE3yYzXC4TmoUz2cMhC3Y02HHssAdlFRK81etRsUbC+VNe+H1mLnm2AFBwVrVOj/paKw7ud2NPkxPHj3i4s5Eaiyjbyvy1tbqwqkSLE0c9DEKBm3Y6CgFzHEq4eEZwOF2LWUHy/KjMHFJTNietTPzEyxgunPZiRnSVRqUo4OJSl0tKdYJDLzeDOkkXCLAmaEadbOV/Gg9l4D+9jsHhMC0vWdkS6hqNSfpJhAlWb8bDriAe3wrlVzSdH+z7Yvif3glxIAZULlHEBRFZiaTeiHkxQlS+eu0UG43X94yc3+Vlj0O6+PJTJkrGK21TKtufDP+vB/Y3WAVyzRzEzaEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/4070ffd5f91edd1c7929b0ce6b00643c/affe8/logo_short.webp 163w,
+/static/4070ffd5f91edd1c7929b0ce6b00643c/11089/logo_short.webp 325w,
+/static/4070ffd5f91edd1c7929b0ce6b00643c/dc6d7/logo_short.webp 400w&quot;
+          sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/4070ffd5f91edd1c7929b0ce6b00643c/9b672/logo_short.png 163w,
+/static/4070ffd5f91edd1c7929b0ce6b00643c/4b204/logo_short.png 325w,
+/static/4070ffd5f91edd1c7929b0ce6b00643c/7c2ef/logo_short.png 400w&quot;
+          sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/4070ffd5f91edd1c7929b0ce6b00643c/7c2ef/logo_short.png&quot;
+          alt=&quot;Frontend Magazine Logo&quot;
+          title=&quot;&quot;
+          src=&quot;/static/4070ffd5f91edd1c7929b0ce6b00643c/7c2ef/logo_short.png&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;</content:encoded></item></channel></rss>
