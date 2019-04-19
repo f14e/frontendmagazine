@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Frontend Magazine]]></title><description><![CDATA[Новости, статьи и полезные материалы для фронтенд-инженеров.]]></description><link>https://frontendmagazine.ru</link><generator>RSS for Node</generator><lastBuildDate>Fri, 19 Apr 2019 20:13:38 GMT</lastBuildDate><item><title><![CDATA[Паттерны проектирования в современном JavaScript]]></title><description><![CDATA[Мысли об эффективной коммуникации при разработке программных продуктов. Перевод  Design patterns in modern JavaScript development Паттерны…]]></description><link>https://frontendmagazine.ru/design-patterns-in-modern-javascript-development/</link><guid isPermaLink="false">https://frontendmagazine.ru/design-patterns-in-modern-javascript-development/</guid><pubDate>Tue, 16 Apr 2019 12:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Мысли об эффективной коммуникации при разработке программных продуктов.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Перевод &lt;a href=&quot;https://levelup.gitconnected.com/design-patterns-in-modern-javascript-development-ec84d8be06ca&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Design patterns in modern JavaScript development&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;паттерны-дизайн-мы-точно-о-разработке-говорим&quot;&gt;&lt;a href=&quot;#%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD%D1%8B-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD-%D0%BC%D1%8B-%D1%82%D0%BE%D1%87%D0%BD%D0%BE-%D0%BE-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B5-%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D0%BC&quot; aria-label=&quot;паттерны дизайн мы точно о разработке говорим permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Паттерны? Дизайн? Мы точно о разработке говорим?&lt;/h2&gt;
+&lt;h3 id=&quot;определенно&quot;&gt;&lt;a href=&quot;#%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE&quot; aria-label=&quot;определенно permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Определенно.&lt;/h3&gt;
+&lt;p&gt;В случае объектно-ориентированного программирования, мы, разработчики, пытаемся моделировать окружающий нас мир. И поскольку это так, имеет смысл также попробовать использовать окружающий нас мир для описания нашего кода.&lt;/p&gt;
+&lt;p&gt;Мы можем обратиться к архитектуре (ту, где есть здания и мосты) и фундаментальной книге, которая называется &lt;strong&gt;Язык Шаблонов: Города, Здания, Кристофера Александра, Сары Исикавы, Миррея Сильверстайна&lt;/strong&gt;, где шаблоны описаны следующим образом:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Каждый шаблон описывает проблему, которая появляется снова и снова в нашем окружении, и затем описывает основу решения этой проблемы таким образом, что вы можете использовать это решение миллионы раз, ни разу не повторившись.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;В программировании, архитектура — это процесс создания здорового, надежного и поддерживаемого приложения, и шаблоны предоставляют способ именования решений общих проблем. Эти решения могут варьироваться от абстрактных/теоретических до очень точных и технических, и позволяют разработчикам эффективнее общаться друг с другом.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7f05bf84ca539c3a63398814e5668034/f049d/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 47.42307692307692%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAGp9B4ZMcT/xAAaEAEBAAIDAAAAAAAAAAAAAAACAwABETEz/9oACAEBAAEFAhLVElwtULyGHq3p/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAHBAAAQMFAAAAAAAAAAAAAAAAAQAQEQIxMkGC/9oACAEBAAY/App0oFgswG6b/8QAGRABAAMBAQAAAAAAAAAAAAAAAQAhMRFx/9oACAEBAAE/IUaW7JQIpiQ7tF5s1NfU2n//2gAMAwEAAgADAAAAELgv/8QAFhEAAwAAAAAAAAAAAAAAAAAAARAh/9oACAEDAQE/EBV//8QAFhEAAwAAAAAAAAAAAAAAAAAAARAh/9oACAECAQE/EDF//8QAHxABAAIBAwUAAAAAAAAAAAAAAQARMSGx8EFRYYHR/9oACAEBAAE/ECFlZCgRPjAKpZoUAuepjSM2pq21pyeJy9E4HtN/uz//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/7f05bf84ca539c3a63398814e5668034/affe8/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 163w,
+/static/7f05bf84ca539c3a63398814e5668034/11089/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 325w,
+/static/7f05bf84ca539c3a63398814e5668034/d0f2e/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 650w,
+/static/7f05bf84ca539c3a63398814e5668034/326de/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 975w,
+/static/7f05bf84ca539c3a63398814e5668034/64b95/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 1300w,
+/static/7f05bf84ca539c3a63398814e5668034/03b10/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 1950w,
+/static/7f05bf84ca539c3a63398814e5668034/2b3fb/1_pdCoxUhmMHI5tBnGVdnNJQ.webp 2600w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/7f05bf84ca539c3a63398814e5668034/21749/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 163w,
+/static/7f05bf84ca539c3a63398814e5668034/3950f/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 325w,
+/static/7f05bf84ca539c3a63398814e5668034/17de2/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 650w,
+/static/7f05bf84ca539c3a63398814e5668034/029e1/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 975w,
+/static/7f05bf84ca539c3a63398814e5668034/b1bd1/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 1300w,
+/static/7f05bf84ca539c3a63398814e5668034/7cbb3/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 1950w,
+/static/7f05bf84ca539c3a63398814e5668034/f049d/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg 2600w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/7f05bf84ca539c3a63398814e5668034/17de2/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg&quot;
+          alt=&quot;Эффективность знания паттернов&quot;
+          title=&quot;&quot;
+          src=&quot;/static/7f05bf84ca539c3a63398814e5668034/17de2/1_pdCoxUhmMHI5tBnGVdnNJQ.jpg&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Если два и более разработчика в команде осведомлены о шаблонах, вести разговор о решениях проблем получается очень эффективно. Однако если о шаблонах знает всего один, объяснить их остальной части команды обычно не сложно.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Цель этой статьи — пробудить ваш аппетит, познакомив вас с идеей шаблонов проектирования и представив паттерны, которые являются интересными потому что используются довольно часто в современных JavaScript проектах.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;шаблон-singleton-одиночка&quot;&gt;&lt;a href=&quot;#%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD-singleton-%D0%BE%D0%B4%D0%B8%D0%BD%D0%BE%D1%87%D0%BA%D0%B0&quot; aria-label=&quot;шаблон singleton одиночка permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Шаблон Singleton (одиночка)&lt;/h2&gt;
+&lt;h3 id=&quot;что&quot;&gt;&lt;a href=&quot;#%D1%87%D1%82%D0%BE&quot; aria-label=&quot;что permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Что&lt;/h3&gt;
+&lt;p&gt;Шаблон singleton не является одним из наиболее часто используемых, но мы начинаем с него, потому что его довольно просто понять.&lt;/p&gt;
+&lt;p&gt;Шаблон singleton происходит из математического понятия:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;В математике singleton — это множество состоящее из одного элемента. Например, множество &lt;code class=&quot;language-text&quot;&gt;{null}&lt;/code&gt; — это singleton.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;В программировании это означает, что мы просто ограничиваем инициализацию класса единственным объектом. Когда объект класса реализующего шаблон singleton должен быть инициализирован в первый раз, он на самом деле инициализируется. Любая последующая попытка приведет к возврату этого первого экземпляра.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/122150d8ce6d3bd662cdc57a1b95166c/9be3e/1_JsnR25Uewd4wZLzZ-a9frg.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 57.42307692307692%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAABcklEQVQoz21S2W7jMAzs/39dEGyAAEFeCtSxdV+UKNmWOk6zQHeRebDG0gxJkfo4n89/nrhcLrfb7XQ6SSmZOYRARDFGkEx0v9+v1ytk8zxv29ZaG2N87PsOac4QEHQ46L1rIeSyLNP09fmphAjWcik950G0IZ5ztdbDjOXH5pzzzuN3XVcETilprR/zXGDr3VqLKMs8O2OQ52WGDmokXLc1RyYqVGrBeUrlwFERAiGfUEobS7kU5pd5/EXveytrqyvq9iEuUgmlp3lZsFiXEmmfTORYdsrvzLUcRVDOQkpjLb7WOSmV1iaEqJTyPkDBbzNzbr2PWo/+4Zi51CdAvPdSIY40WoO/uv3L3A/zfvAUE/pttBELBqdAYohaWas9U+XyJnNv3MY2xj4oZuicCRqFmxA9pUhWpOL3lkZO9Y2ZK7e1oe3amMfjIaXAdKbHZKxBqVrj8ooyHfdg/sf849+fAPlvHw8Lo3YHvFgE3gX2vwHINHa4ytlCBAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/122150d8ce6d3bd662cdc57a1b95166c/affe8/1_JsnR25Uewd4wZLzZ-a9frg.webp 163w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/11089/1_JsnR25Uewd4wZLzZ-a9frg.webp 325w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/d0f2e/1_JsnR25Uewd4wZLzZ-a9frg.webp 650w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/326de/1_JsnR25Uewd4wZLzZ-a9frg.webp 975w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/64b95/1_JsnR25Uewd4wZLzZ-a9frg.webp 1300w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/03b10/1_JsnR25Uewd4wZLzZ-a9frg.webp 1950w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/2b3fb/1_JsnR25Uewd4wZLzZ-a9frg.webp 2600w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/122150d8ce6d3bd662cdc57a1b95166c/9b672/1_JsnR25Uewd4wZLzZ-a9frg.png 163w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/4b204/1_JsnR25Uewd4wZLzZ-a9frg.png 325w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/e7b61/1_JsnR25Uewd4wZLzZ-a9frg.png 650w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/50a28/1_JsnR25Uewd4wZLzZ-a9frg.png 975w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/67fa2/1_JsnR25Uewd4wZLzZ-a9frg.png 1300w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/c7d2d/1_JsnR25Uewd4wZLzZ-a9frg.png 1950w,
+/static/122150d8ce6d3bd662cdc57a1b95166c/9be3e/1_JsnR25Uewd4wZLzZ-a9frg.png 2600w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/122150d8ce6d3bd662cdc57a1b95166c/e7b61/1_JsnR25Uewd4wZLzZ-a9frg.png&quot;
+          alt=&quot;Схема шаблона singleton&quot;
+          title=&quot;&quot;
+          src=&quot;/static/122150d8ce6d3bd662cdc57a1b95166c/e7b61/1_JsnR25Uewd4wZLzZ-a9frg.png&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;em&gt;Кому нужны 2 супергероя, когда есть Бэтмен?&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;зачем&quot;&gt;&lt;a href=&quot;#%D0%B7%D0%B0%D1%87%D0%B5%D0%BC&quot; aria-label=&quot;зачем permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Зачем&lt;/h3&gt;
+&lt;p&gt;Кроме того что он позволяет нам всегда иметь единственного супергероя (которым всегда, очевидно, будет Бэтмен), зачем нам может понадобиться использовать singleton?&lt;/p&gt;
+&lt;p&gt;Хотя singleton — шаблон не без проблем (его прозвали злом, а объекты реализующие его — патологическими лгунами), ему все еще находят применение. Самое очевидное — создание конфигурационных объектов. Вы скорее всего хотите иметь один экземпляр конфига для всего приложения, если только предоставление множественных конфигураций — это не одна из возможностей вашего приложения.&lt;/p&gt;
+&lt;h3 id=&quot;где&quot;&gt;&lt;a href=&quot;#%D0%B3%D0%B4%D0%B5&quot; aria-label=&quot;где permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Где&lt;/h3&gt;
+&lt;p&gt;Сервисы в Angular — яркий пример шаблона singleton, используемого в большом и популярном фреймворке. В документации Angular есть &lt;a href=&quot;https://angular.io/guide/singleton-services&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;отдельная страница&lt;/a&gt;, объясняющая как убедиться в том, что сервис всегда предоставляется как singleton&lt;/p&gt;
+&lt;p&gt;Сервисы являющиеся одиночками имеют большой смысл, поскольку используются как место для хранения стейта, конфигурации и связи между компонентами, и вы хотите быть уверенными, что несколько экземпляров не привнесут в приложение путаницу.&lt;/p&gt;
+&lt;p&gt;В качестве примера, предположим, у вас есть тривиальное приложение, которое используется для подсчета количества нажатий кнопки.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f58518f066f4d4f341928b147dc78566/d0ce9/1_PZpt4afyPY10CnuRADJx5w.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 47.83180026281209%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAABPElEQVQoz22SXYuCUBCG/f//I4hAhBLRIkK86CpvzAvBog/WMrQvaf0q3QfP5m67vRfDeWfmnTNn5kimadq2rev6bDYbj8eqqhqGMZ1ONU3DclYUxXGcuq6rqqpfIW02G9/34zg+n89RFEGXy2WSJFGD1Wq1WCwIZVn2Rny5XPb7fZqmt9sNS56gnw1Op1MYhlDE9T9Ij8cjz/O2q/v9XhTFH1o1eCPGS+H8ieIJQQmJWm8hiUu4H0s2zYuGhUdc2Nrf9FssgIs5fTTgqejLsqRtqlDxeDwynev1ymgJ4X8Rw8kOgsDzvLQBjeBhVNRar9eHw2G32223W0qIF/2I4Wx7MBiMRiMWzqHb7aIhNJ/PO50Onn6/P5lM+Av8AjYqtW+gGaGUZZkkKN2Kabmua1nWcDjs9XoUEgtC9QX+WCwzzjYf0wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/f58518f066f4d4f341928b147dc78566/affe8/1_PZpt4afyPY10CnuRADJx5w.webp 163w,
+/static/f58518f066f4d4f341928b147dc78566/11089/1_PZpt4afyPY10CnuRADJx5w.webp 325w,
+/static/f58518f066f4d4f341928b147dc78566/d0f2e/1_PZpt4afyPY10CnuRADJx5w.webp 650w,
+/static/f58518f066f4d4f341928b147dc78566/326de/1_PZpt4afyPY10CnuRADJx5w.webp 975w,
+/static/f58518f066f4d4f341928b147dc78566/64b95/1_PZpt4afyPY10CnuRADJx5w.webp 1300w,
+/static/f58518f066f4d4f341928b147dc78566/03b10/1_PZpt4afyPY10CnuRADJx5w.webp 1950w,
+/static/f58518f066f4d4f341928b147dc78566/a1142/1_PZpt4afyPY10CnuRADJx5w.webp 2283w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/f58518f066f4d4f341928b147dc78566/9b672/1_PZpt4afyPY10CnuRADJx5w.png 163w,
+/static/f58518f066f4d4f341928b147dc78566/4b204/1_PZpt4afyPY10CnuRADJx5w.png 325w,
+/static/f58518f066f4d4f341928b147dc78566/e7b61/1_PZpt4afyPY10CnuRADJx5w.png 650w,
+/static/f58518f066f4d4f341928b147dc78566/50a28/1_PZpt4afyPY10CnuRADJx5w.png 975w,
+/static/f58518f066f4d4f341928b147dc78566/67fa2/1_PZpt4afyPY10CnuRADJx5w.png 1300w,
+/static/f58518f066f4d4f341928b147dc78566/c7d2d/1_PZpt4afyPY10CnuRADJx5w.png 1950w,
+/static/f58518f066f4d4f341928b147dc78566/d0ce9/1_PZpt4afyPY10CnuRADJx5w.png 2283w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/f58518f066f4d4f341928b147dc78566/e7b61/1_PZpt4afyPY10CnuRADJx5w.png&quot;
+          alt=&quot;Схема приложения&quot;
+          title=&quot;&quot;
+          src=&quot;/static/f58518f066f4d4f341928b147dc78566/e7b61/1_PZpt4afyPY10CnuRADJx5w.png&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Вам нужно хранить количество нажатий на кнопку в одном объекте, который предоставляет:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;функционал для подсчета&lt;/li&gt;
+&lt;li&gt;текущее количество кликов&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Если бы объект не был синглтоном (и каждая кнопка получила свой собственный экземпляр), подсчет кликов не был бы корректным. Кроме всего прочего, который из экземпляров вы бы передали в компонент, отображающий текущее количество кликов?&lt;/p&gt;
+&lt;h2 id=&quot;шаблон-observer-наблюдатель&quot;&gt;&lt;a href=&quot;#%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD-observer-%D0%BD%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&quot; aria-label=&quot;шаблон observer наблюдатель permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Шаблон Observer (наблюдатель)&lt;/h2&gt;
+&lt;h3 id=&quot;что-1&quot;&gt;&lt;a href=&quot;#%D1%87%D1%82%D0%BE-1&quot; aria-label=&quot;что 1 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Что&lt;/h3&gt;
+&lt;p&gt;Шаблон наблюдателя определяется следующим образом:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Шаблон observer — это шаблон проектирования программного обеспечения, в котором объект, называемый субъектом, ведет список зависящих от него объектов, называемых наблюдателями, и автоматически уведомляет их о любых изменениях состояния, обычно вызывая один из их методов.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Шаблон observer действительно легко понять, если мы попытаемся сравнить его с примером из реально мира — подписками на газеты.&lt;/p&gt;
+&lt;p&gt;Обычный сценарий покупки газеты заключается в том, что вы идете к газетному киоску и спрашиваете, вышел ли новый номер вашей любимой газеты. Если нет, то это печально и вам придется идти домой и позже попытаться снова. В терминах JavaScript это будет то же самое что и цикл, исполняющий до тех пор, пока желаемый результат не будет получен.&lt;/p&gt;
+&lt;p&gt;Когда вы наконец-то добрались до газеты, вы вольны делать то, что планировали сделать с ней все это время — сесть и наслаждаться газетой за чашечкой кофе (или, с точки зрения JavaScript, исполнить колбэк).&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/016937e62b5a65f5faa93ee4212d0977/f049d/1_arrsn5kxG1GRbVpn7tlZkw.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 32.61538461538462%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQD/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAdoSWEJ//8QAGRAAAgMBAAAAAAAAAAAAAAAAAQMAAhES/9oACAEBAAEFAlFfDgLOyf/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABwQAAEDBQAAAAAAAAAAAAAAAAEAAhESITFRof/aAAgBAQAGPwJppudprBAniwv/xAAZEAACAwEAAAAAAAAAAAAAAAABEQAhQYH/2gAIAQEAAT8hABtLUtaCBAhHrs//2gAMAwEAAgADAAAAEP8A3//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/EGf/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAgEBPxAn/8QAGRABAQEBAQEAAAAAAAAAAAAAAREhAEFR/9oACAEBAAE/EBFOa3Xv3OzIxlA+TLvN0UKUi9//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/016937e62b5a65f5faa93ee4212d0977/affe8/1_arrsn5kxG1GRbVpn7tlZkw.webp 163w,
+/static/016937e62b5a65f5faa93ee4212d0977/11089/1_arrsn5kxG1GRbVpn7tlZkw.webp 325w,
+/static/016937e62b5a65f5faa93ee4212d0977/d0f2e/1_arrsn5kxG1GRbVpn7tlZkw.webp 650w,
+/static/016937e62b5a65f5faa93ee4212d0977/326de/1_arrsn5kxG1GRbVpn7tlZkw.webp 975w,
+/static/016937e62b5a65f5faa93ee4212d0977/64b95/1_arrsn5kxG1GRbVpn7tlZkw.webp 1300w,
+/static/016937e62b5a65f5faa93ee4212d0977/03b10/1_arrsn5kxG1GRbVpn7tlZkw.webp 1950w,
+/static/016937e62b5a65f5faa93ee4212d0977/2b3fb/1_arrsn5kxG1GRbVpn7tlZkw.webp 2600w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/016937e62b5a65f5faa93ee4212d0977/21749/1_arrsn5kxG1GRbVpn7tlZkw.jpg 163w,
+/static/016937e62b5a65f5faa93ee4212d0977/3950f/1_arrsn5kxG1GRbVpn7tlZkw.jpg 325w,
+/static/016937e62b5a65f5faa93ee4212d0977/17de2/1_arrsn5kxG1GRbVpn7tlZkw.jpg 650w,
+/static/016937e62b5a65f5faa93ee4212d0977/029e1/1_arrsn5kxG1GRbVpn7tlZkw.jpg 975w,
+/static/016937e62b5a65f5faa93ee4212d0977/b1bd1/1_arrsn5kxG1GRbVpn7tlZkw.jpg 1300w,
+/static/016937e62b5a65f5faa93ee4212d0977/7cbb3/1_arrsn5kxG1GRbVpn7tlZkw.jpg 1950w,
+/static/016937e62b5a65f5faa93ee4212d0977/f049d/1_arrsn5kxG1GRbVpn7tlZkw.jpg 2600w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/016937e62b5a65f5faa93ee4212d0977/17de2/1_arrsn5kxG1GRbVpn7tlZkw.jpg&quot;
+          alt=&quot;Наконец-то&quot;
+          title=&quot;&quot;
+          src=&quot;/static/016937e62b5a65f5faa93ee4212d0977/17de2/1_arrsn5kxG1GRbVpn7tlZkw.jpg&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Самое разумное что можно сделать чтобы регулярно получать вашу любимую газету, это оформить на нее подписку.&lt;/p&gt;
+&lt;p&gt;Таким образом, издательство сообщит вам, когда выйдет новый номер газеты, и доставит его. Больше не нужно бежать в газетный киоск. Никаких разочарований. Блаженство.&lt;/p&gt;
+&lt;p&gt;В терминах JavaScript это означает, что вам больше не нужно в цикле опрашивать результат, чтобы запустить колбэк.&lt;/p&gt;
+&lt;p&gt;Вместо этого вы должны сообщить субъекту, что вы заинтересованы в определенных событиях (сообщениях) и предоставить ему колбэк, который должен быть вызван когда новые данные будут готовы. Теперь вы являетесь наблюдателем.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fa223bcb220621a61e615f7624d522bd/2a660/1_Umz-GYQk5skILT07e0Kr4A.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 90.10494752623688%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAIAAADUsmlHAAAACXBIWXMAAAsSAAALEgHS3X78AAACJ0lEQVQ4y21TXYvqMBDt//8hoiIIooKCig/6KPgkyoIfqGvVVtumaSZp4p406np791CGGGfmzJyZeI1Go9VqNZvNbrc7Go1qtdp0Oq1Wq4vF4vF4aK0f/8IYA3u73Tqdjlev1xGMFDi02+1er4fI2WymCkil3jH5CzhzzkHmIUccx2GB+/0OG0URbr4KrFarJI6VJFhBhEhkhIXPeDz2iOhdEorMsswd4AQrOE+TBEmvlysCNpvN4XAQQgRBMBwOPZw+gz9/AhJ0RIyBiguRJQkD4Ha5XCBTmZmEkETHwyEMAmO0zJCNJOGfHCergpQoG81CIM/V+cvMuRKZ/32MwtDAE4H4RFlz8E8mk2fZpoDtWRC+zXbnX64q16Q0yT+C0zTFjP5jfub6aBtai7wUjFFZtdEGZFwul/v9Hs3gFiXg8ng8nk7f0JalqchytIq8sgDcIBhWw5YNbwjgwpAIJZ3P5+126/s+nO5RxBKRcY4aGXuqjVHZssujIkFK7Pa74Ba4S1IyTYlnHNN2c0YWkGERn6NyG/teko81NjrXLM5vIZNuYnnumG3PfwqmtXG9FXv2kGRHIV9w0gwGA69EhdpQC1K8dxubnjJKkhgBuIdFPLTo9/vlnqELfLabnX86K8uBncs5w3oR+lyv1xgK+MBRqVQ8aOuem3sMPIVkOrzGSZyhWvsJI7iJ7iAku22FRugZL98yv4GU6vWAS0B2u+UF3MDn8/kPKJ36BPr9meoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/fa223bcb220621a61e615f7624d522bd/affe8/1_Umz-GYQk5skILT07e0Kr4A.webp 163w,
+/static/fa223bcb220621a61e615f7624d522bd/11089/1_Umz-GYQk5skILT07e0Kr4A.webp 325w,
+/static/fa223bcb220621a61e615f7624d522bd/d0f2e/1_Umz-GYQk5skILT07e0Kr4A.webp 650w,
+/static/fa223bcb220621a61e615f7624d522bd/326de/1_Umz-GYQk5skILT07e0Kr4A.webp 975w,
+/static/fa223bcb220621a61e615f7624d522bd/64b95/1_Umz-GYQk5skILT07e0Kr4A.webp 1300w,
+/static/fa223bcb220621a61e615f7624d522bd/03b10/1_Umz-GYQk5skILT07e0Kr4A.webp 1950w,
+/static/fa223bcb220621a61e615f7624d522bd/f075a/1_Umz-GYQk5skILT07e0Kr4A.webp 2001w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/fa223bcb220621a61e615f7624d522bd/9b672/1_Umz-GYQk5skILT07e0Kr4A.png 163w,
+/static/fa223bcb220621a61e615f7624d522bd/4b204/1_Umz-GYQk5skILT07e0Kr4A.png 325w,
+/static/fa223bcb220621a61e615f7624d522bd/e7b61/1_Umz-GYQk5skILT07e0Kr4A.png 650w,
+/static/fa223bcb220621a61e615f7624d522bd/50a28/1_Umz-GYQk5skILT07e0Kr4A.png 975w,
+/static/fa223bcb220621a61e615f7624d522bd/67fa2/1_Umz-GYQk5skILT07e0Kr4A.png 1300w,
+/static/fa223bcb220621a61e615f7624d522bd/c7d2d/1_Umz-GYQk5skILT07e0Kr4A.png 1950w,
+/static/fa223bcb220621a61e615f7624d522bd/2a660/1_Umz-GYQk5skILT07e0Kr4A.png 2001w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/fa223bcb220621a61e615f7624d522bd/e7b61/1_Umz-GYQk5skILT07e0Kr4A.png&quot;
+          alt=&quot;Схема шаблона наблюдатель&quot;
+          title=&quot;&quot;
+          src=&quot;/static/fa223bcb220621a61e615f7624d522bd/e7b61/1_Umz-GYQk5skILT07e0Kr4A.png&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;em&gt;Никогда больше не пропускайте свою утреннюю газету&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Приятно то, что вам не обязательно быть единственным подписчиком. Другие люди тоже будут разочарованы отсутствием газеты, как и вы. Вот почему много наблюдателей могут подписаться на событие.&lt;/p&gt;
+&lt;h3 id=&quot;зачем-1&quot;&gt;&lt;a href=&quot;#%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-1&quot; aria-label=&quot;зачем 1 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Зачем&lt;/h3&gt;
+&lt;p&gt;Шаблон наблюдателя имеет много вариантов использования, но, как правило, его следует использовать, когда вы хотите создать зависимость один-ко-многим (one-to-many) между объектами, которые не являются тесно связанными и имеют возможность уведомлять неограниченное число объектов об изменении состояния.&lt;/p&gt;
+&lt;p&gt;JavaScript — отличное место для шаблона observer, потому что все зависит от событий (event-driven), и вместо того, чтобы постоянно спрашивать, не произошло ли событие, вы должны позволить событию оповестить вас («Меня не нужно звать, я сам прихожу»).&lt;/p&gt;
+&lt;p&gt;Скорее всего, вы уже делали что-то похожее на паттерн observer — &lt;code class=&quot;language-text&quot;&gt;addEventListener&lt;/code&gt;. Добавление слушателя события на элемент имеет все признаки наблюдателя:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;вы можете подписаться на объект&lt;/li&gt;
+&lt;li&gt;вы можете отписаться от объекта&lt;/li&gt;
+&lt;li&gt;и объект может оповещать о событии всех своих подписчиков&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Большая выгода от изучения этого шаблона в том, что вы сможете реализовать свое собственное решение, или освоить существующее гораздо быстрее.&lt;/p&gt;
+&lt;h3 id=&quot;где-1&quot;&gt;&lt;a href=&quot;#%D0%B3%D0%B4%D0%B5-1&quot; aria-label=&quot;где 1 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Где&lt;/h3&gt;
+&lt;p&gt;Реализовать базовый функционал не слишком сложно, но есть большая библиотека, используемая многими проектами, и это &lt;a href=&quot;http://reactivex.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ReactiveX&lt;/a&gt;, аналогом которой в JavaScript является &lt;a href=&quot;https://rxjs.dev/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;RxJS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;RxJS позволяет вам не только подписываться на события, но также дает вам возможность преобразовывать данные любыми способами, которые вы только можете себе представить, объединяя несколько подписок, делая асинхронную работу более подконтрольной и много чего еще. Если вы когда-нибудь хотели поднять уровень обработки и преобразования данных на более высокий уровень, RxJS была бы отличной библиотекой для изучения.&lt;/p&gt;
+&lt;p&gt;Помимо шаблона observer, ReactiveX также гордится реализацией шаблона iterator, который дает субъектам возможность сообщать своим подписчикам, когда подписка закончилась, эффективно завершая подписку со стороны субъекта. Я не буду объяснять шаблон итератора в этой статье, но для вас было бы очень полезно узнать о нем больше и посмотреть, как он вписывается в паттерн наблюдатель.&lt;/p&gt;
+&lt;h2 id=&quot;паттерн-facade-фасад&quot;&gt;&lt;a href=&quot;#%D0%BF%D0%B0%D1%82%D1%82%D0%B5%D1%80%D0%BD-facade-%D1%84%D0%B0%D1%81%D0%B0%D0%B4&quot; aria-label=&quot;паттерн facade фасад permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Паттерн Facade (фасад)&lt;/h2&gt;
+&lt;h3 id=&quot;что-2&quot;&gt;&lt;a href=&quot;#%D1%87%D1%82%D0%BE-2&quot; aria-label=&quot;что 2 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Что&lt;/h3&gt;
+&lt;p&gt;Фасад — это паттерн, который берет свое название из архитектуры.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Фасад — это, как правило, одна из внешних сторон здания, обычно передняя. Это слово заимствовано из французского «façade», что означает «палисадник» или «лицо».&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Поскольку в архитектуре фасад — это внешняя часть здания, прячущая за собой его внутреннее устройство, шаблон фасад в разработке программного обеспечения пытается скрыть за собой лежащую в основе чего-либо сложность, давая вам возможность работать с API, который легче понять, и одновременно позволяя изменять базовый код на ваше усмотрение.&lt;/p&gt;
+&lt;h3 id=&quot;зачем-2&quot;&gt;&lt;a href=&quot;#%D0%B7%D0%B0%D1%87%D0%B5%D0%BC-2&quot; aria-label=&quot;зачем 2 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Зачем&lt;/h3&gt;
+&lt;p&gt;Вы можете использовать этот паттерн в несметном множестве ситуаций, но наиболее заметными из них будут упрощение понимания вашего кода (скрытие сложности) и создание минимально связанных частей приложений.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a2c56d1671e999c1e74bd621acbaed38/25a5a/1_Unh3rSLKfaMzs3gweZF7UQ.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 103.23624595469256%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAACXBIWXMAAAsSAAALEgHS3X78AAACOElEQVQ4y42UW6upYRDHfTjXPoNPsa5d+ASKspQkkWMLJSTlEHGhUCgi5+1MDottWWv/9js7WdZe256Lp3nmnZn/zH/meVUfN/L29hYIBMxmczgcdrlciUTCarWGQiGLxZLP53F4f3+/9VfdXo7H4w9FNpvNbrfjRJ/NZvP5fLVafXyRT8Gvr6+Ao6zXa7/fT8x2ux0OhyQ6HA53sN8Gg/b09GRWRKfT1et17JfL5V/BR0WSySTVFgoFvV6v0WjoeTQanU6nB8EgcxaLxVwul06nYSsejzebTUn6oGwa41wulx6PJxaLabVatVodiUQw7vf7/+25VCoxKrfb/fz8TCLJ+ziYxnCqVqsmk8lgMDgcjk6ncw1GLjfyl2BhLpPJRKNRWrh+eoAMpTgReT6f0UGjC04s9IyREQ4VgX+24FMwuX8qgh9Z2BAKOSkim5PNZqHg5eWFLa5UKvdzxo9IlMViQW42lCvpQMZB9G9HxWfwSdFut2u1Wq/Xww4+G0rGK20iqmvBAggCb4AKQQCWT9PplPqxSzufCMMkrOwVAVOKxy47I0YoEAehU9ZBJSbSgyaRQjj4cAum0C4ZYQEuJNEfZC60B/syLVljro1Gg1ZpWGaG8LxgAUVegYpLt9vt9/uTyaTVavGe0DkJxgKUDHYwGGAHdjweo1Pp72A2yefz8XpSqZTT6bTb7VFFjEYjZzAYtNlsLKnX68WNOfNOMFLC/aiokM/8ukjEnySsSLlcJoyV+PoP+wVa+oVK7+uLbwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/a2c56d1671e999c1e74bd621acbaed38/affe8/1_Unh3rSLKfaMzs3gweZF7UQ.webp 163w,
+/static/a2c56d1671e999c1e74bd621acbaed38/11089/1_Unh3rSLKfaMzs3gweZF7UQ.webp 325w,
+/static/a2c56d1671e999c1e74bd621acbaed38/d0f2e/1_Unh3rSLKfaMzs3gweZF7UQ.webp 650w,
+/static/a2c56d1671e999c1e74bd621acbaed38/326de/1_Unh3rSLKfaMzs3gweZF7UQ.webp 975w,
+/static/a2c56d1671e999c1e74bd621acbaed38/64b95/1_Unh3rSLKfaMzs3gweZF7UQ.webp 1300w,
+/static/a2c56d1671e999c1e74bd621acbaed38/acf46/1_Unh3rSLKfaMzs3gweZF7UQ.webp 1854w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/a2c56d1671e999c1e74bd621acbaed38/9b672/1_Unh3rSLKfaMzs3gweZF7UQ.png 163w,
+/static/a2c56d1671e999c1e74bd621acbaed38/4b204/1_Unh3rSLKfaMzs3gweZF7UQ.png 325w,
+/static/a2c56d1671e999c1e74bd621acbaed38/e7b61/1_Unh3rSLKfaMzs3gweZF7UQ.png 650w,
+/static/a2c56d1671e999c1e74bd621acbaed38/50a28/1_Unh3rSLKfaMzs3gweZF7UQ.png 975w,
+/static/a2c56d1671e999c1e74bd621acbaed38/67fa2/1_Unh3rSLKfaMzs3gweZF7UQ.png 1300w,
+/static/a2c56d1671e999c1e74bd621acbaed38/25a5a/1_Unh3rSLKfaMzs3gweZF7UQ.png 1854w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/a2c56d1671e999c1e74bd621acbaed38/e7b61/1_Unh3rSLKfaMzs3gweZF7UQ.png&quot;
+          alt=&quot;Схема паттерна Фасад&quot;
+          title=&quot;&quot;
+          src=&quot;/static/a2c56d1671e999c1e74bd621acbaed38/e7b61/1_Unh3rSLKfaMzs3gweZF7UQ.png&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;em&gt;Fus Ro Dah!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Легко понять, что в данной ситуации будет лучше － фасад или слой со множеством объектов. Вы не захотите иметь дело с драконами, если этого можно избежать. Объект фасада предоставит вам хороший API и сам разберется со всеми драконьими выходками.&lt;/p&gt;
+&lt;p&gt;Еще одна замечательная вещь, которую мы можем сделать, это заменить дракона, даже не касаясь остальной части приложения. Допустим, вы хотите заменить этого дракона котенком. У него все еще есть когти, но его легче кормить. Чтобы изменить его, нужно переписать код на фасаде без изменения каких-либо зависимых объектов.&lt;/p&gt;
+&lt;h3 id=&quot;где-2&quot;&gt;&lt;a href=&quot;#%D0%B3%D0%B4%D0%B5-2&quot; aria-label=&quot;где 2 permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Где&lt;/h3&gt;
+&lt;p&gt;Место, где вы часто будете видеть фасады, — это Angular, использующий его сервисы как средство упрощения бизнес логики. Но как вы увидите в следующем примере, это не обязательно должен быть Angular.&lt;/p&gt;
+&lt;p&gt;Допустим, вы хотите добавить управление состоянием в ваше приложение. Вы можете взять Redux, NgRx, Akita, MobX, Apollo или любую другую библиотеку, которые появляются то там, то здесь. Ну, а почему бы не взять их всех и не попробовать?&lt;/p&gt;
+&lt;p&gt;Каким базовым функционалом должна обладать библиотека для управления состоянием?&lt;/p&gt;
+&lt;p&gt;Вероятно:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;способ сообщить что вы хотите внести в стейт какие-то изменения&lt;/li&gt;
+&lt;li&gt;и способ получения текущего (кусочка) состояния.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Звучит не так уж плохо.&lt;/p&gt;
+&lt;p&gt;Теперь, обладая силой паттерна Facade, вы можете написать по фасаду для каждой из частей стейта, которые предоставят удобный API для работы с ними. Что-то вроде &lt;code class=&quot;language-text&quot;&gt;facade.startSpinner()&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;facade.stopSpinner()&lt;/code&gt; и &lt;code class=&quot;language-text&quot;&gt;facade.getSpinnerState()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Эти методы вполне логичны.&lt;/p&gt;
+&lt;p&gt;После этого вы можете заняться фасадом и написать код, который преобразует его так, чтобы он работал с Apollo (GraphQL сейчас в тренде). Возможно вы поймете, что он не подходит под ваш стиль написания кода, или что процесс написания Unit тестов － не то что вы ожидали. Без проблем — напишите новый фасад, который будет поддерживать работу с MobX.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/fbfde/1_O3pSZ9xOfBkk7lO0CtGCPA.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 650px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 64.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsSAAALEgHS3X78AAACOUlEQVQoz01SS4vTUBjN/1CGAUEX4l8QZuvGvQsXKugIjsrIiDsRYfwJQnGvlj5G7cKW0mk7afqadvqkr8FiH7ZNkzZJ82ia5Homt9Y5hHC/e7/zfed89zLEcTTTOubyP4/ZxAl7epqPx+OFQiGRSCSTyUgkkkqlcrlcLBYrlUqEENu2HcchLhhl9Hsa/zxnv0onX3S+b6wsx7Zns1mz2ez3+8vlcuVCnInpbFoUBNPFmixywdaDrV+Prv55uqVlg0tCpJlYrVY7nU6j0VgsFkiq1+t7Owdvbhw+ufOs3exghzZnpknv+evbk08vxXc7asq7IqTTbg0Gg/39/fF4DJFIOquevdp+/+Hmx8e3ntcr9f9kgTs6f7jd373O711Ts0EIEvhJuVxGZyg3DANJc2n+4u7B/Su7b+8dSvLctuy1bJUfKOlvcvpIy383hKFhrhzHRs92uz0ajWAPhi3LEkUx/COCWYCDnTXZxAkhJv0sCweartOpQLOmaTjH2AwdZU2EiqwYSwNpSGCI64B+yNZ1HX7QB50lScIaO0jp9XrRaNTv9wcCAVyb1+v1+XwM+QfHJaOJqqoYMhRiASZs449WCFGx1WqhEBaVSoWhNMqRZRk0RVFUFxciXWAf4cbqBhdk6orneei0XaAVpkVfCEoLggAjCJHpXAJDb6zb7cIJXmUmk4GeYrHIcRweSa1WY1k24wLlNje87kwDqBoOh9PpFGY8Hk84HMZsQqEQBoP9yWSCI3rnl/EXE06xAPR6vrUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/affe8/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 163w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/11089/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 325w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/d0f2e/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 650w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/326de/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 975w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/64b95/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 1300w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/03b10/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 1950w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/ce3fe/1_O3pSZ9xOfBkk7lO0CtGCPA.webp 2400w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/9b672/1_O3pSZ9xOfBkk7lO0CtGCPA.png 163w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/4b204/1_O3pSZ9xOfBkk7lO0CtGCPA.png 325w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/e7b61/1_O3pSZ9xOfBkk7lO0CtGCPA.png 650w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/50a28/1_O3pSZ9xOfBkk7lO0CtGCPA.png 975w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/67fa2/1_O3pSZ9xOfBkk7lO0CtGCPA.png 1300w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/c7d2d/1_O3pSZ9xOfBkk7lO0CtGCPA.png 1950w,
+/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/fbfde/1_O3pSZ9xOfBkk7lO0CtGCPA.png 2400w&quot;
+          sizes=&quot;(max-width: 650px) 100vw, 650px&quot;
+          type=&quot;image/png&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/e7b61/1_O3pSZ9xOfBkk7lO0CtGCPA.png&quot;
+          alt=&quot;Схема паттерна Фасад, применимо к библиотекам управления состоянием&quot;
+          title=&quot;&quot;
+          src=&quot;/static/2ba61cc3f5bba5ab0e86c8d6e57d4cbc/e7b61/1_O3pSZ9xOfBkk7lO0CtGCPA.png&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+&lt;em&gt;Тут могли быть драконы…&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;куда-идти-дальше&quot;&gt;&lt;a href=&quot;#%D0%BA%D1%83%D0%B4%D0%B0-%D0%B8%D0%B4%D1%82%D0%B8-%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5&quot; aria-label=&quot;куда идти дальше permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Куда идти дальше&lt;/h2&gt;
+&lt;p&gt;Вы, наверное, заметили, что не было ни кода, ни реализации шаблонов, о которых я говорил. Это потому, что для описания каждого из этих паттенов может потребоваться целая глава книги, как минимум.&lt;/p&gt;
+&lt;p&gt;Поскольку мы заговорили о книгах, не мешало бы взглянуть на одну или две, посвященные паттернам проектирования.&lt;/p&gt;
+&lt;p&gt;Первой и самой большой рекомендацией будет &lt;a href=&quot;http://wiki.c2.com/?DesignPatternsBook&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Приёмы объектно-ориентированного проектирования. Паттерны проектирования&lt;/a&gt; &lt;em&gt;Эриха Гаммы, Ричарда Хелма, Ральфа Джонсона&lt;/em&gt; и &lt;em&gt;Джона Флиссайда&lt;/em&gt;, также известных как &lt;em&gt;«Банда четырех»&lt;/em&gt;. Книга является золотой жилой и де-факто библией шаблонов проектирования программного обеспечения.&lt;/p&gt;
+&lt;p&gt;Если вы ищете что-то, что немного легче усваивается, то есть &lt;a href=&quot;https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Head First Паттерны проектирования&lt;/a&gt; &lt;em&gt;Берт Бейтс, Кэти Сьерра, Эрик Фриман&lt;/em&gt; и &lt;em&gt;Элизабет Робсон&lt;/em&gt;. Это очень хорошая книга, которая пытается передать смысл паттернов через визуальную перспективу.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;И последнее, но не менее важное: ничто не сравнится с поиском в Google, чтением и опробованием разных подходов. Даже если вы в конечном итоге никогда не используете шаблон или технику, вы чему-то научитесь и будете расти так, как вы никогда не ожидали.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Фигуры диалогов, использованные в иллюстрациях, созданы &lt;a href=&quot;https://www.freepik.com/free-photos-vectors/frame&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;starline — www.freepik.com&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
