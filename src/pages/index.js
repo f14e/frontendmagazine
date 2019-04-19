@@ -4,6 +4,7 @@ import Layout from "components/layout";
 import SEO from "components/seo";
 import Footer from "components/Footer/Footer";
 import { rhythm } from "utils/typography";
+import ReadingTimeEstimate from "components/ReadingTimeEstimate/ReadingTimeEstimate";
 import "./index.css";
 
 class BlogIndex extends React.Component {
@@ -24,6 +25,7 @@ class BlogIndex extends React.Component {
             `программирование`,
             `frontend`,
             `frontend magazine`,
+            `переводы`,
           ]}
         />
         {posts.map(({ node }) => {
@@ -41,6 +43,12 @@ class BlogIndex extends React.Component {
               </h3>
               <small>
                 <time>{node.frontmatter.date}</time>
+                &nbsp;
+                ·
+                &nbsp;
+                <ReadingTimeEstimate
+                  minutes={Math.round(node.fields.readingTime.minutes)}
+                />
               </small>
               <p
                 dangerouslySetInnerHTML={{
@@ -76,6 +84,11 @@ export const pageQuery = graphql`
             date(formatString: "DD MMMM YYYY", locale: "ru")
             title
             description
+          }
+          fields {
+            readingTime {
+              minutes
+            }
           }
         }
       }
